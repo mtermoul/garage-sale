@@ -1,21 +1,15 @@
 
-# Create Progressive Web App with ease using Vue, Cosmic JS, and GraphQL
+# Create a Progressive Web App using Vue, Cosmic JS, and GraphQL
 <img src="./images/grid_view_Nexus.png" width="30%" alt="Main screen Nexus 5 Phone" style="display: block; margin-left: auto; margin-right: auto;">
 
 ## TL;DR
 
-* [Demo](http://garage-sale.cosmicapp1.co/)
-* [Source Code](https://github.com/mtermoul/garage-sale)
-* [Vue](https://vuejs.org/)
-* [Vuex](https://vuex.vuejs.org/)
-* [Cosmic JS](https://cosmicjs.com/)
-* [GraphQL](https://graphql.org/)
-* [PWA applications](https://www.npmjs.com/package/@vue/cli-plugin-pwa)
-* [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
+* <a href="http://garage-sale.cosmicapp1.co" target="_blank">Vue.js PWA Demo</a>
+* <a href="https://github.com/mtermoul/garage-sale" target="_blank">Vue.js PWA Source Code</a>
 
 ## Intro
 
-Progressive Web Apps (PWA) combine the look and feel of an app with the ease of programming of a website. These cutting edge apps make it easy for your users to access your content, and engaged users increase your revenue. Rapid Loading is one of it's features. PWA load faster than mobile websites, even with limited internet availability, ensuring your users always have the best experience. These are the main features:
+<a href="https://www.npmjs.com/package/@vue/cli-plugin-pwa" target="_blank">Progressive Web Apps</a> (PWA) combine the look and feel of an app with the ease of programming of a website. These cutting edge apps make it easy for your users to access your content, and engaged users increase your revenue. Rapid Loading is one of its features. PWA's load faster than mobile websites, even with limited internet availability, ensuring your users always have the best experience. Here are the main features:
 
 * Access Anywhere
 * Direct Deployment
@@ -26,22 +20,22 @@ Progressive Web Apps (PWA) combine the look and feel of an app with the ease of 
 
 One of the best parts of PWA is they are quick to build and quick to get to the market without dealing with any phone native code or app store wars.
 
-This application was mainly inspired by Offerup, Letgo, and Craigslist.
-Like Craigslist, LetGo allows you to buy and sell items locally, which means you don’t have to deal with the hassles of shipping like you would on eBay or Amazon. With 30 million users, it is more popular than OfferUp. LetGo has been featured in many commercial lately, so you may be more familiar with it as well. The only issue is that both apps are mobile apps available on both iPhone and Android platform, however there no PWA version. So let's sit back and see if we can leverage PWA, Vue, Cosmic JS, and build one.
+This application was mainly inspired by Offerup, Letgo, and Craigslist. Like Craigslist, LetGo allows you to buy and sell items locally, which means you don’t have to deal with the hassles of shipping like you would on eBay or Amazon. With 30 million users, it is more popular than OfferUp. LetGo has been featured in many commercial lately, so you may be more familiar with it as well. The only issue is that both apps are mobile apps available on both iPhone and Android platform, however there is no PWA version. So let's sit back and see if we can leverage PWA, Vue and Cosmic JS to build one.
 
 ## Application Overview
 
-The application consist of mainly three major functions:
-* Display a list of items for sale in your area. In our case it will be a gallery view if images for all items for sale
+The application consists of three major functions:
+
+* Display a list of items for sale in your area. In our case it will be a gallery view of  all items for sale
 * The ability to search for keywords and filter the gallery view to the items matching the search term
-* The ability to click an item image and show the item description, seller, more images, contact seller...
-* The ability to add new item. This feature I didn't build due to the scope of this project, but this can certainly add a valuable addition.
+* The ability to click an item image and show the item description, seller, more images, and contact seller...
+* The ability to add new items. I didn't build this feature due to the scope of this project, but this can certainly add a valuable addition.
 
 <img src="./images/detail_view_Nexus.png" width="30%" alt="Post item detail view Nexus 5 Phone" style="display: block; margin-left: auto; margin-right: auto;">
 
 ## Starting your Vue PWA app
 
-Let's rollup our sleeves and get building. We'll start by creating the project using vue-cli commands. However if you don't have vue-cli installed, please follow this. So open your terminal window and type the following:
+Let's roll up our sleeves and get building. We'll start by creating the project using vue-cli commands. However if you don't have vue-cli installed, please follow this. So open your terminal window and type the following:
 
 
 ```
@@ -87,8 +81,7 @@ Vue CLI v3.0.0-rc.9
 
 ```
 
-So far, this step looks like any regular Vue app creation except the PWA selection step. Thanks to vue-cli which is a doing a lot work behind the senes and add the service worker option which a major feature of PWAs.
-So let's continue and add our functions step by step.
+So far, this step looks like any regular Vue app creation except the PWA selection step. Thanks to vue-cli which is a doing a lot work behind the senes and add the service worker option which a major feature of PWAs. So let's continue and add our functions step by step.
 
 We also need to add Vuetify which will be our css framework. Before using Vuetify, I used Bootstrap for most of my projects, however after trying Vuetify, I was hooked since. Vuetify in my opinion offers two major advantages:
 
@@ -99,7 +92,7 @@ So let's add it to out project
 
 
 ```
-vue add vue-cli-plugin-plugin
+vue add vue-cli-plugin-vuetify
 ? Use a pre-made template? (will replace App.vue and HelloWorld.vue) Yes
 ? Use custom theme? No
 ? Use a-la-carte components? Yes
@@ -138,7 +131,7 @@ In order to let mobile devices know that your app is PWA capable, you need to en
 
 ```
 
-You start by specifying the name of your app, and the icons that can be used for you app shortcut. As PWA application the mobile device browser will ask the user if they want to install your app once they visit your site for the first time. If yes, then a shortcut will be added to the mobile device home screen. It's also worth noting as a part of this app setup, you need to create icons with diferrent sizes that can be used for different mobile device. For me I had to define the following icons:
+You start by specifying the name of your app, and the icons that can be used for your app shortcut. As PWA application the mobile device browser will ask the user if they want to install your app once they visit your site for the first time. If yes, then a shortcut will be added to the mobile device home screen. It's also worth noting as a part of this app setup, you need to create icons with different sizes that can be used for different mobile device. For me I had to define the following icons:
 
 
 ```
@@ -212,8 +205,7 @@ export default new Router({
 })
 ```
 
-Note that the router we didn't import the `PostDetails.vue` component at the beginning. This is lazy loading, which means that our app would not load this component at the start to make it faster and only load this component once the user needs it.
-And let's edit the main.js and the App.vue as the following:
+Note that the router didn't import the `PostDetails.vue` component at the beginning. This is lazy loading, which means that our app would not load this component at the start to make it faster and only load this component once the user needs it. And let's edit the main.js and the App.vue as the following:
 
 
 ```
@@ -276,16 +268,16 @@ So let's start by creating our UI as we see below.
 </template>
 ```
 
-So far in our home page we just added a top toolbar with a search text field, search button, and left navigation menu. in page content area we just added a component `post-grid` which will serve as a place holder for our data.
+So far in our home page we just added a top toolbar with a search text field, search button, and left navigation menu. In the page's content area we just added a component `post-grid` which will serve as a place holder for our data.
 
-Before moving any further we need some data to test and build our UI components. So without further due, lets do that in the next chapter.
+Before moving any further we need some data to test and build our UI components. So without further todo, lets do that in the next section.
 
 ## Building the backend with Cosmic JS
 
-Before discovering Cosmic JS, I use to use either plain JSON files and write a little Node.js application that have a bunch of Rest API endpoints. Another alternative is using some cloud noSQL database to host the JSON data documents and write a server Rest API to serve that data. However all that is gone, after learning that with Cosmic JS, you no longer have to write server side API. Just design your data, insert or import from JSON files, and the Cosmic JS will generate the Rest API automatically for you. As a matter affect Cosmic JS, offers two kind of API end points:
+Before discovering Cosmic JS, I use to use either plain JSON files and write a little Node.js application that have a bunch of Rest API endpoints. Another alternative is using some cloud noSQL database to host the JSON data documents and write a server Rest API to serve that data. However, all that is gone, after learning that with Cosmic JS, you no longer have to write a server side API. Just design your data, insert or import from JSON files, and Cosmic JS will generate the Rest API automatically for you. As a matter of fact Cosmic JS, offers two kind of API end points:
+
 * Rest API which will be CRUD methods for adding, displaying, and updating your data.
-* GraphQL API, which is also similar to Rest, but you can write your queries using special Syntax called GraphQL. If your no familiar with GraphQL, I encourage you to review the documents. It's has been gaining a lot momentum lately due to it's flexibilities and popularity. Plus it was developed by Facebook.
-For my application I will include both Rest, and GraphQL methods to let you experiment and decide which one works best for you. If you are not using Cosmic JS, then you have to write your own server GraphQL API using some database as a storage mechanism, and Node.js for the GraphQL endpoints.
+* GraphQL API, which is also similar to Rest, but you can write your queries using special Syntax called GraphQL. If you're not familiar with GraphQL, I encourage you to review the documents. It's has been gaining a lot momentum lately due to its flexibilities and popularity. Plus it was developed by Facebook. For my application I will include both Rest, and GraphQL methods to let you experiment and decide which one works best for you. If you are not using Cosmic JS, then you have to write your own server GraphQL API using some database as a storage mechanism, and Node.js for the GraphQL endpoints.
 
 OK, let's jump in to Cosmic JS and add our data elements. after you sign up for free account, open the dashboard and add new bucket called `garage-sale`.
 
@@ -340,14 +332,13 @@ name: text
 
 After adding the `Object Type` and `metafields`, it's time to add some data. For adding data just click on the object type from Cosmic JS dashboard left menu, and start adding data. You can also insert data using Cosmic JS CLI API. Please review the documentation for the CLI functions. I personally used both the dashboard and the CLI to insert the test data for my application. Here is an example of how you would add data to the post categories object type:
 
-
 ```
 # inserting into PostCategories
 cosmic add-object --type_slug "postcategories" --title "Shoes" --metafields [{title: "name", value: "Shoes"}]
 cosmic add-object --type_slug "postcategories" --title "Cars" --metafields [{title: "name", value: "Cars"}]
 ```
 
-and in a similar way you can add all of your objects. For the images, it's easier to open the dashboard, and upload all of your images using the `Media` function from the left menu of Cosmic JS dashboard. For my application, each post have multiple images, and each image has three versions. Extra small, small, and medium which will be selected based on the screen display size. Since we are developing for PWA which is mainly for mobile devices, we will be mainly serving xm and sm images. However we are also providing an alternate view for a desktop using the md files just in case if the app is opened from the desktop screen. We will get into more details about how to optimize images for our PWA app further down.
+and in a similar way you can add all of your objects. For the images, it's easier to open the dashboard, and upload all of your images using the `Media` function from the left menu of Cosmic JS dashboard. For my application, each post has multiple images, and each image has three versions. Extra small, small, and medium which will be selected based on the screen display size. Since we are developing for PWA which is mainly for mobile devices, we will be mainly serving xm and sm images. However we are also providing an alternate view for a desktop using the md files just in case if the app is opened from the desktop screen. We will get into more details about how to optimize images for our PWA app further down.
 
 <img src="./images/cosmic_add_images.png" width="80%" alt="Cosmic JS - Add images" style="display: block; margin-left: auto; margin-right: auto;">
 
@@ -434,7 +425,7 @@ export default new Vuex.Store({
 })
 ```
 
-So let me go over few point from the store file above. First in order to use GraphQL API from Cosmic JS or any other GraphQL api we need the GraphQL client library. At the time of writing this article there are many js libraries that can be used as a GraphQL client, however I picked [apollo-boost](https://www.npmjs.com/package/apollo-boost) because it has in-memory caching feature. I am also using `graphql-tag` to be able to parse the GraphQL queries written as multi-line string. After that we need to initiate the `ApolloClient` instance, by providing the URL for the GraphQL API. In our case the url provided to us by CosmicJS is `https://graphql.cosmicjs.com/v1`.
+Now let me go over few point from the store file above. First in order to use GraphQL API from Cosmic JS or any other GraphQL api we need the GraphQL client library. At the time of writing this article there are many js libraries that can be used as a GraphQL client, however I picked [apollo-boost](https://www.npmjs.com/package/apollo-boost) because it has in-memory caching feature. I am also using `graphql-tag` to be able to parse the GraphQL queries written as multi-line string. After that we need to initiate the `ApolloClient` instance, by providing the URL for the GraphQL API. In our case the url provided to us by CosmicJS is `https://graphql.cosmicjs.com/v1`.
 After this, we are ready to write our first GraphQL query, and fetch some data. In the function `fetchPostsGQ` we can see the syntax of the GraphQL query as the following:
 
 
@@ -461,7 +452,7 @@ The rest of the code is just required to get the results and populate the `state
 
 ## Loading initial data and populating the home page
 
-When starting the application we will see the data loading spinner for few seconds, then we will see grid loaded with the data from the server.
+When starting the application we will see the data loading spinner for few seconds, then we will see the grid loaded with the data from the server.
 
 <img src="./images/home_loading_Nexus.png" width="30%" alt="Home page - Data is loading..." style="display: block; margin-left: auto; margin-right: auto;">
 
@@ -636,8 +627,7 @@ The code above is simply selecting the right image file name based on the screen
 
 ## Time to run the app and test it
 
-I think at this point we our application is ready for some testing. To check and see how the app is behaving on a mobile device, I strongly recommend using Chrome dev tool. And from there, you can use the device toolbar to change device screen size. You can also see how the app will behave with a touch screen capability. I believe Safari has a similar feature, called `Enter Responsive Design Mode` under the development menu.
-Another useful feature that allow me to test how actual phone feels, was the xCode device simulator. I used this function, when I was troubleshooting some iPhone specific issues, and it came really handy. I believe that xCode can be installed easily on a mac, however I am not sure about PCs! But I think that Windows OS should have similar apps or other device simulators.
+I think at this point our application is ready for some testing. To check and see how the app is behaving on a mobile device, I strongly recommend using Chrome dev tool. From there, you can use the device toolbar to change your device screen size. You can also see how the app will behave with a touch screen capability. I believe Safari has a similar feature, called `Enter Responsive Design Mode` under the development menu. Another useful feature that allow me to test how actual phone feels was the xCode device simulator. I used this function when I was troubleshooting some issues specific to iPhones, and it really came in handy. I believe that xCode can be installed easily on a mac, however I am not sure about PCs! But I think that Windows OS should have similar apps or other device simulators.
 
 <img src="./images/chrome_device_mode.png" width="80%" alt="Chrome device toolbar" style="display: block; margin-left: auto; margin-right: auto;">
 
@@ -686,6 +676,6 @@ I know that I didn't not go through every line of code here, however I strongly 
 
 ## Conclusion
 
-Building a PWA application may feels daunting task at first. However with the help of Vue templates, Vuetify, and Cosmic JS, the task felt more enjoyable, and I learned few more tricks at the end. So my conclusion, is that you may not know all the answers before your journey, however as long as you have the ability to ask those questions, and try new things, you will learn, and grow in your way to building great things.
+Building a PWA application may feels daunting task at first. However with the help of Vue templates, Vuetify, and Cosmic JS, the task felt more enjoyable, and I learned few more tricks at the end. My conclusion is that you may not know all the answers before your journey, however, as long as you have the ability to ask those questions, and try new things, you will learn and grow in your journey to building great things.
 
-Thanks for taking the time to read my story, and I hope that I have inspired you to build you next PWA idea.
+Thanks for taking the time to read my story, and I hope that I have inspired you to build your next PWA idea.  Let me know if you have any questions or comments <a href="https://twitter.com/cosmic_js" target="_blank">Reach out to us on Twitter</a> and <a href="https://cosmicjs.com/community" target="_blank">join our Slack community</a>.
