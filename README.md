@@ -4,9 +4,9 @@
 
 # Links
 
-Demo
+<a href="https://cosmicjs.com/apps/vue-garage-sale/demo" target="_blank">Demo</a>
 
-Tutorial article
+<a href="https://hackernoon.com/create-a-progressive-web-app-using-vue-cosmic-js-and-graphql-e3cb86943210" target="_blank">Tutorial article</a>
 
 # Libraries
 
